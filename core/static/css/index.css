@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:whitesmoke;
+    font-family:'Poppins',sans-serif;
+    font-weight:300; 
+    font-style:normal;
+}
+
+.card{
+    border:0;
+    width:320px;
+    cursor:pointer;
+}
+
+.card .filecount{
+    font-size:15px;
+}
+
+.card:hover{
+   box-shadow: 0 0 10px rgba(106, 90, 205, 0.2) !important;
+}
+
+.cards{
+    display:flex; 
+    gap:1rem;
+}
