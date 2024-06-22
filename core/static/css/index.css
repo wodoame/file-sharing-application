@@ -1,3 +1,10 @@
+:root{
+    --dark-text:rgb(148, 163, 184);
+    --dark-body-background:#0F172A;
+    --dark-primary:#1E293B; 
+    --dark-bold-color:#fff; /* just white text */
+}
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -11,14 +18,34 @@ body{
     font-style:normal;
 }
 
+@media(prefers-color-scheme:dark){
+    body{
+        background:var(--dark-body-background);
+    }
+}
+
 .card{
     border:0;
     width:320px;
     cursor:pointer;
 }
 
+
 .card .filecount{
     font-size:15px;
+}
+
+
+/* card dark */
+@media(prefers-color-scheme:dark){
+ .card{
+    background:var(--dark-primary);
+    color: var(--dark-text);
+ }
+
+ .card .filecount{
+    color: var(--dark-text) !important;
+ }
 }
 
 .card:hover{
@@ -28,4 +55,9 @@ body{
 .cards{
     display:flex; 
     gap:1rem;
+}
+
+.card .profile-image{
+    width:27px; 
+    aspect-ratio: 1/1;
 }
