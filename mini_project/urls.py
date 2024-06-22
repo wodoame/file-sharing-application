@@ -20,5 +20,6 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Index.as_view(), name='index')
+    path('', views.Index.as_view(), name='index'),
+    path('files/', views.Files.as_view(), name='files'),
 ]
