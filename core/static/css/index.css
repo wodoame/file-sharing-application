@@ -11,6 +11,7 @@
     padding:0;
 }
 
+
 body{
     background:whitesmoke;
     font-family:'Poppins',sans-serif;
@@ -38,18 +39,18 @@ body{
 
 /* card dark */
 @media(prefers-color-scheme:dark){
- .card{
-    background:var(--dark-primary);
-    color: var(--dark-text);
- }
-
- .card .filecount{
-    color: var(--dark-text) !important;
- }
+    .card{
+        background:var(--dark-primary);
+        color: var(--dark-text);
+    }
+    
+    .card .filecount{
+        color: var(--dark-text) !important;
+    }
 }
 
 .card:hover{
-   box-shadow: 0 0 10px rgba(106, 90, 205, 0.2) !important;
+    box-shadow: 0 0 10px rgba(106, 90, 205, 0.2) !important;
 }
 
 .cards{
@@ -61,3 +62,37 @@ body{
     width:27px; 
     aspect-ratio: 1/1;
 }
+
+/* files.css */
+
+ul{
+    padding:0 !important;
+    display:flex;
+    gap:1rem;
+}
+
+li{
+    list-style:none;
+    padding:0.75rem;
+    width:110px;
+}
+
+li .filename{
+    font-size:15px;
+}
+
+li:hover{
+    cursor:pointer;
+}
+
+@media(prefers-color-scheme:dark){
+    li{
+        color:var(--dark-bold-color);
+    }
+
+    li:hover{
+        background-color:var(--dark-primary);
+        box-shadow: 0 0 10px rgba(106, 90, 205, 0.2) !important;
+    }
+}
+
