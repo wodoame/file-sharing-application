@@ -17,4 +17,8 @@ class File(AbstractModel):
     folder = models.ForeignKey(Folder, on_delete=models.CASCADE, related_name='files')
     name = models.CharField(max_length=125)
     file = models.FileField(upload_to='files/')
-    
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pics', blank=True)
+

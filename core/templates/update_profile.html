@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Update Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Profile</button>
+    </form>
+</body>
+</html>
