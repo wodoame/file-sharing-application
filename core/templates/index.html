@@ -5,12 +5,19 @@
     <div class="cards">
       {% for user in users %}
         <div class="card p-2 shadow-sm">
-        <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: steelblue;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2z"></path></svg></div>
+        <div class="d-flex justify-content-between">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: steelblue;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2z"></path></svg>
+          
+          <div class="profile-image"><img
+             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+             alt="profile-picture"
+             class="img-fluid rounded-circle"></div>
+
+        </div>
         <div class="username mt-2">{{user.username}}</div>
         <div class="filecount text-muted mt-2">23 files</div>
         </div>
       {% endfor %}
     </div>
-
   </main>
 {% endblock %}
