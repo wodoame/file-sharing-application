@@ -90,19 +90,21 @@ ul{
     position: absolute;
     right:0.25rem;
     top:0.25rem;
-    opacity:0;
     padding:0.125rem;
 }
 
 
-.file:hover .dots{
+.file:hover .dots svg{
     opacity:1;
+}
+.file .dots svg{
+    opacity:0;
 }
 
 
 .dropdown-content{
     position:absolute; 
-    top:1.5rem;
+    top:2.5rem;
     padding:0.75rem;
     z-index:99;
 }

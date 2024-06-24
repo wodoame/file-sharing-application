@@ -7,7 +7,7 @@
             <li class="mb-3 rounded file" x-data="{'open':false}">
                 <div class="dots rounded" @click="open=!open">
                     <svg role="button" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: steelblue;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>               
-                    <div  x-show="open" class="dropdown-content rounded" @mouseout="open=false">
+                    <div  x-show="open" class="dropdown-content rounded" @click.outside="open=false">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
                     </div>
                 </div>
