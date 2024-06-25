@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index.as_view(), name='index'),
     path('files/', views.Files.as_view(), name='files'),
+    path('upload-file/', views.UploadFile.as_view(), name='upload-file'),
+    path('my-files/', views.MyFiles.as_view(), name='my-files'),
+    path('render-files/', views.RenderFiles.as_view()),
 ]
