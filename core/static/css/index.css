@@ -5,6 +5,11 @@
     --dark-bold-color:#fff; /* just white text */
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -17,11 +22,12 @@ body{
     font-family:'Poppins',sans-serif;
     font-weight:300; 
     font-style:normal;
+    min-height:100vh; /* because of some stupid tailwind cdn behaviour */
 }
 
 @media(prefers-color-scheme:dark){
     body{
-        background:var(--dark-body-background);
+        background:var(--dark-body-background) !important;
     }
 }
 
@@ -131,3 +137,15 @@ ul{
     
 }
 
+
+/* upload file page*/
+@media(prefers-color-scheme:dark){
+    .file-upload{
+        background:var(--dark-primary);
+    }
+
+    .input{
+        background:var(--dark-primary);
+    }
+
+}
