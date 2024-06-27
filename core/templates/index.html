@@ -1,17 +1,26 @@
 {% extends 'layout.html' %}
 
 {% block body%}
-  <main class="p-4">
+  <main class="px-4 mt-6">
     <div class="cards">
       {% for user in users %}
-        <div class="card rounded-md p-2 shadow-sm">
+        <div class="card rounded-md p-4 shadow-sm">
         <div class="flex justify-between">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: steelblue;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2z"></path></svg>
           
-          <div class="profile-image"><img
-             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-             alt="profile-picture"
-             class="rounded-full"></div>
+          <div x-data="data" id="image-component">
+            <template x-if="loaded">
+              <div x-show="loaded" class="profile-image"><img
+                 :src="url"
+                 alt="profile-picture"
+                 class="rounded-full"></div>
+             </template>
+               
+               <template x-if="!loaded">
+                 <div class="profile-image animate-pulse rounded-full bg-gray-600">
+                 </div>
+               </template>
+          </div>
 
         </div>
         <div class="username mt-2">{{user.username}}</div>
@@ -19,8 +28,24 @@
         </div>
       {% endfor %}
     </div>
-    <div class="mt-4">
-      <a href="{% url 'upload-file' %}" role="button" class="btn btn-info rounded-md">Upload a file</a>   
-    </div>
+   
   </main>
+  <script>
+    document.addEventListener('alpine:init', ()=>{
+      Alpine.data('data', ()=>({
+        url:undefined,
+        loaded: false,
+        init(){
+          this.getImage();
+        }, 
+
+        async getImage(){
+            const response = await fetch('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80');
+            const blob = await response.blob();
+            this.url = URL.createObjectURL(blob);
+            this.loaded = true;
+          }
+      }));
+    });
+  </script>
 {% endblock %}

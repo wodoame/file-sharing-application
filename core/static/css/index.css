@@ -29,6 +29,10 @@ body{
     body{
         background:var(--dark-body-background) !important;
     }
+
+    .input{
+        background:var(--dark-primary) !important;
+    }
 }
 
 .card{
@@ -71,7 +75,7 @@ body{
 
 /* files.css */
 
-ul{
+#files{
     padding:0 !important;
     display:flex;
     gap:1rem;
@@ -100,10 +104,10 @@ ul{
 }
 
 
-.file:hover .dots svg{
+.file:hover .dots .dropdown-toggle{
     opacity:1;
 }
-.file .dots svg{
+.file .dots .dropdown-toggle{
     opacity:0;
 }
 
@@ -113,6 +117,13 @@ ul{
     top:2.5rem;
     padding:0.75rem;
     z-index:99;
+}
+
+.dropdown-content li{
+    padding:0.25rem;
+    display:flex; 
+    gap:0.25rem;
+    align-items:center;
 }
 
 @media(prefers-color-scheme:dark){
@@ -131,10 +142,13 @@ ul{
         box-shadow: 0 0 5px rgba(106, 90, 205, 0.2);
     }
 
+    .dropdown-content li:hover{
+        background: rgb(128, 128, 128, 0.1);
+    }
+
     .file .dots:hover{
         background: rgb(128, 128, 128, 0.1);
     }
-    
 }
 
 
