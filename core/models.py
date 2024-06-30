@@ -10,8 +10,13 @@ class AbstractModel(models.Model):
         abstract = True 
 
 class Folder(AbstractModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='folders')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='folders', blank=True)
+    folder = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_folders', null=True, blank=True)
     name = models.CharField(max_length=128)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    
+    def isFolder(self): 
+        return True
 
 
 class File(AbstractModel):
@@ -19,5 +24,10 @@ class File(AbstractModel):
     name = models.CharField(max_length=125, null=True, blank=True)
     file = models.FileField(upload_to='files/')
     extension = models.CharField(max_length=10, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+
+    
+    def isFolder(self): 
+        return False
         
     

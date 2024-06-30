@@ -1,15 +1,10 @@
 {% extends 'layout.html' %}
-{% load static %}
-{% block usecdn %}
- <link rel="stylesheet" href="{% static 'css/daisyui.min.css' %}">
- <script src="{% static 'js/tailwind.js' %}"></script>
-{% endblock %}
 
 {% block body %}
   <main class="p-4">
 
       <div class="flex justify-center">
-          <form method="POST" enctype="multipart/form-data" class="w-3/5">
+          <form method="POST" enctype="multipart/form-data" class="w-3/5" x-data="uploadForm">
             {% csrf_token %}
             <!-- <div class="mb-4">
                 <input type="text" class="input w-full">
@@ -17,12 +12,18 @@
             <div class="flex items-center justify-center w-full">
                 <label for="dropzone-file" class="file-upload flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                        </svg>
-                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
+                        <template x-if="!changed">
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                        </template>
+
+                        <template x-if="changed">
+                            <svg viewBox="0 0 1024 1024" class="icon mb-4" version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M853.333333 960H170.666667V64h469.333333l213.333333 213.333333z" class="fill-[#4682b4]"></path><path d="M821.333333 298.666667H618.666667V96z" class="fill-[#4682b4]"></path></g></svg>
+                        </template>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold" x-text="filename"></span></p>
                     </div>
-                    <input id="dropzone-file" type="file" name="file" class="hidden" />
+                    <input @change="toggle" id="dropzone-file" type="file" name="file" class="hidden" />
                 </label>
             </div>
             <div class="mt-2">
@@ -31,4 +32,11 @@
           </form>
       </div>
   </main>
+  <!-- <script>
+       document.addEventListener('alpine:init', ()=>{
+          Alpine.data('uploadForm', ()=>({
+
+          }));
+       });
+  </script> -->
 {% endblock %}

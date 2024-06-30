@@ -12,5 +12,17 @@ document.addEventListener('alpine:init', ()=>{
             this.url = URL.createObjectURL(blob);
             this.loaded = true;
           }
-      }));
+      })); 
+
+      Alpine.data('uploadForm', ()=>({
+         filename:'Click to upload', 
+         changed: false, 
+         toggle(){
+            this.filename = document.getElementById('dropzone-file').files[0].name;
+            this.changed = true;
+         }
+
+      })); 
 });
+
+
